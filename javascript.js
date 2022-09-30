@@ -2,17 +2,16 @@ const table = document.getElementById("table");
 const timer = document.getElementById("timer");
 let arr = [ '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄' ];
 let code = '';
-let sec = 4;
+let sec = 20;
 
-// setInterval(function(){ 
-//     if(sec >= 0) {timer.innerHTML = sec-- }
-    
-// },1000)    
+// Creating a timer to end the game
+setInterval(function(){ 
+    if(sec >= 0) {
+        timer.innerHTML = sec;
+        sec-- 
+    }},1000)    
         
-    
-    
-
-//  START creating a table
+// Creating a table
 for (let i = 1; i <= 4; i++) {
     code += '<tr>'  
     for (let j = 1; j <= 4; j++) {
@@ -24,9 +23,8 @@ for (let i = 1; i <= 4; i++) {
     code += '</tr>'     
 }
 table.innerHTML = code
-//  FINISH creating a table
 
-// START creating game functionality
+// Creating game functionality
 const one = document.querySelectorAll(".one");
 const two = document.querySelectorAll(".two");
 const three = document.querySelectorAll(".three");
@@ -35,62 +33,66 @@ const game = 'GAME';
 const over = 'OVER';
 
 function opens(xana) {
- 
-    if( xana.style.background=='orange') {
-        let key = rand (0, arr.length-1)
+    
+    if( xana.style.background == 'orange' && sec >= 0) {
+        let key = rand (0, arr.length-1);
         xana.innerHTML = arr[key];
         arr.splice(key, 1);
       
-    
     if( xana.innerHTML == '🎄' ) {
-        xana.style.transform = 'rotateY(180deg)'
-        xana.style.background = "green"
-        xana.style.background = "green"
+        xana.style.transform = 'rotateY(180deg)';
+        xana.style.background = "green";
+        xana.style.background = "green";
 
     } else if( xana.innerHTML == '💣') {
-        xana.style.transform = 'rotateY(180deg)'
-        xana.style.background = "red"
-
-        setTimeout(function () {
-            function myLoop () {
-                setTimeout(function() {
-                    for(let d = 0; d<=3; d++) {
-
-                        one[d].style.transform = 'rotateY(360deg)'
-                        two[d].style.transform = 'rotateY(360deg)'
-                        three[d].style.transform = 'rotateY(360deg)'
-                        four[d].style.transform = 'rotateY(360deg)'
-                     
-                        one[d].style.background = 'black'
-                        two[d].style.background = 'black'
-                        three[d].style.background = 'black'
-                        four[d].style.background = 'black'
-    
-                        one[d].innerHTML = ' '
-                        four[d].innerHTML = ' '
-                        two[d].innerHTML = game[d]
-                        three[d].innerHTML = over[d]
-                    }
-            },100)
-            } myLoop()
-        }, 300);
+        xana.style.transform = 'rotateY(180deg)';
+        xana.style.background = "red";
+        myGreeting()
     }}
 }
-// FİNİSH creating game functionality
 
-// START reseting the game
+function myGreeting() {
+    setTimeout(function () {
+        function myLoop () {
+            setTimeout(function() {
+                for(let d = 0; d<=3; d++) {
+
+                    one[d].style.transform = 'rotateY(360deg)';
+                    two[d].style.transform = 'rotateY(360deg)';
+                    three[d].style.transform = 'rotateY(360deg)';
+                    four[d].style.transform = 'rotateY(360deg)';
+                 
+                    one[d].style.background = 'black';
+                    two[d].style.background = 'black';
+                    three[d].style.background = 'black';
+                    four[d].style.background = 'black';
+
+                    one[d].innerHTML = ' ';
+                    four[d].innerHTML = ' ';
+                    two[d].innerHTML = game[d];
+                    three[d].innerHTML = over[d];
+
+                    sec = 0;
+                }
+        },100)
+        } myLoop()
+    }, 300);}
+const myTimeout = setTimeout(myGreeting, 20000);
+
+
+// Reseting the game
 const cell = document.querySelectorAll('.cell');
 const reset = document.getElementById("reset");
+
 function again() {
     cell.forEach((item) => {
       item.style.background = 'orange';
       item.innerHTML = '';
-      arr = [ '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄' ]
-    }
-    )
-}
+      arr = [ '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄' ];
+      sec = 20;
+    })}
+
 reset.addEventListener('click', again)
-// FINISH reseting the game
 
 // Using this function we get random numbers
 function rand(min, max) {
