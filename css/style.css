@@ -1,0 +1,32 @@
+#timer {
+    text-align: center;
+    font: bold 2em Arial;
+    color: crimson;
+}
+table {
+    margin: 30px auto;
+    border-collapse: collapse;
+    filter: drop-shadow(0 0 1rem crimson);
+}
+tr,td {
+    text-align: center;
+    width: 100px; 
+    height: 100px;
+    border: 1px solid #aaa;
+}
+td { transition: 1s }
+.one, .two, .three, .four {
+    color: red;
+    font: bold 1.5em Arial;
+}
+div { text-align: center }
+#reset {
+    margin: 0 auto;
+    background: black;
+    border: none;
+    width: 150px;
+    height: 50px;
+    font: bold 1em Arial;
+    border-radius: 20px;
+    color: orange;
+}
