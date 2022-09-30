@@ -4,7 +4,7 @@
     color: crimson;
 }
 table {
-    margin: 30px auto;
+    margin: 0 auto;
     border-collapse: collapse;
     filter: drop-shadow(0 0 1rem crimson);
 }
