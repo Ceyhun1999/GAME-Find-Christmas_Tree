@@ -79,7 +79,6 @@ function myGreeting() {
     }, 300);}
 const myTimeout = setTimeout(myGreeting, 20000);
 
-
 // Reseting the game
 const cell = document.querySelectorAll('.cell');
 const reset = document.getElementById("reset");
