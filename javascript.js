@@ -2,7 +2,7 @@ const table = document.getElementById("table");
 const timer = document.getElementById("timer");
 let arr = [ '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄' ];
 let code = '';
-let sec = 20;
+let sec = 19;
 
 // Creating a timer to end the game
 setInterval(function(){ 
@@ -88,7 +88,7 @@ function again() {
       item.style.background = 'orange';
       item.innerHTML = '';
       arr = [ '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄' ];
-      sec = 20;
+      sec = 19;
     })}
 
 reset.addEventListener('click', again)
