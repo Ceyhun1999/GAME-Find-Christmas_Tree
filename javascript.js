@@ -1,15 +1,18 @@
 const table = document.getElementById("table");
 const timer = document.getElementById("timer");
-let arr = [ '🎄', '🎄', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄' ];
+let arr = [ '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄' ];
 let code = '';
-let sec = 19;
+let sec = 29;
 
 // Creating a timer to end the game
 setInterval(function(){ 
     if(sec >= 0) {
         timer.innerHTML = sec;
         sec-- 
-    }},1000)    
+        if(timer.innerHTML == 0) myGreeting()
+    }
+    
+},1000)    
         
 // Creating a table
 for (let i = 1; i <= 4; i++) {
@@ -39,16 +42,19 @@ function opens(xana) {
         xana.innerHTML = arr[key];
         arr.splice(key, 1);
       
-    if( xana.innerHTML == '🎄' ) {
-        xana.style.transform = 'rotateY(180deg)';
-        xana.style.background = "green";
-        xana.style.background = "green";
+        if( xana.innerHTML == '🎄' ) {
+            xana.style.transform = 'rotateY(180deg)';
+            xana.style.background = "green";
+            xana.style.background = "green";
+            console.log(sec);
 
-    } else if( xana.innerHTML == '💣') {
-        xana.style.transform = 'rotateY(180deg)';
-        xana.style.background = "red";
-        myGreeting()
-    }}}
+        } else if( xana.innerHTML == '💣') {
+            xana.style.transform = 'rotateY(180deg)';
+            xana.style.background = "red";
+            myGreeting()
+        }
+    }
+}
 
 function myGreeting() {
     setTimeout(function () {
@@ -70,40 +76,34 @@ function myGreeting() {
                     four[d].innerHTML = ' ';
                     two[d].innerHTML = game[d];
                     three[d].innerHTML = over[d];
-
-                    sec = 0;
                 }
         },100)
         } myLoop()
     }, 300);}
-const myTimeout = setTimeout(myGreeting, 20000);
+// const myTimeout = setTimeout(myGreeting, 20000);
 
 // Reseting the game
 const cell = document.querySelectorAll('.cell');
 const reset = document.getElementById("reset");
 
 function again() {
-    if(timer.innerHTML == 0) {
+    console.log(`${sec}ilk`);
+        sec = 30;
+    console.log(`${sec}sonra`);
         cell.forEach((item) => {
             item.style.background = 'orange';
             item.innerHTML = '';
-            arr = [ '🎄', '🎄', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄' ];
-            sec = 20;
-            setTimeout(myGreeting, 20000)
-            console.log('if');
+            arr = [ '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄' ];
           })
-    }    else {
-        console.log('else');
-    }
 }
 
 reset.addEventListener('click', again);
 
 // block the repeated pressing of the reset button
-reset.addEventListener("click", () => {
-    reset.disabled = true;
-    setTimeout(() => reset.disabled = false, 3000);
-  });
+// reset.addEventListener("click", () => {
+//     reset.disabled = true;
+//     setTimeout(() => reset.disabled = false, 1000);
+//   });
 
 // Using this function we get random numbers
 function rand(min, max) {
