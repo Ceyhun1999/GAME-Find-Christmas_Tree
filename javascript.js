@@ -1,6 +1,6 @@
 const table = document.getElementById("table");
 const timer = document.getElementById("timer");
-let arr = [ '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄' ];
+let arr = [ '🎄', '🎄', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄' ];
 let code = '';
 let sec = 19;
 
@@ -48,8 +48,7 @@ function opens(xana) {
         xana.style.transform = 'rotateY(180deg)';
         xana.style.background = "red";
         myGreeting()
-    }}
-}
+    }}}
 
 function myGreeting() {
     setTimeout(function () {
@@ -84,14 +83,27 @@ const cell = document.querySelectorAll('.cell');
 const reset = document.getElementById("reset");
 
 function again() {
-    cell.forEach((item) => {
-      item.style.background = 'orange';
-      item.innerHTML = '';
-      arr = [ '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄' ];
-      sec = 19;
-    })}
+    if(timer.innerHTML == 0) {
+        cell.forEach((item) => {
+            item.style.background = 'orange';
+            item.innerHTML = '';
+            arr = [ '🎄', '🎄', '🎄', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄', '🎄', '💣', '🎄', '🎄', '🎄' ];
+            sec = 20;
+            setTimeout(myGreeting, 20000)
+            console.log('if');
+          })
+    }    else {
+        console.log('else');
+    }
+}
 
-reset.addEventListener('click', again)
+reset.addEventListener('click', again);
+
+// block the repeated pressing of the reset button
+reset.addEventListener("click", () => {
+    reset.disabled = true;
+    setTimeout(() => reset.disabled = false, 3000);
+  });
 
 // Using this function we get random numbers
 function rand(min, max) {
