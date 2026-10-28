@@ -1,35 +1,35 @@
 # Find the Christmas Tree
 
-Игра на удачу и скорость: откройте клетки и найдите ёлки, не наступив на бомбу.
+A game of luck and speed: open cells to find Christmas trees without hitting a bomb.
 
-**[Играть онлайн →](https://ceyhun1999.github.io/GAME-Find-Christmas_Tree/)**
+**[Play online →](https://ceyhun1999.github.io/GAME-Find-Christmas_Tree/)**
 
-<p align="center"><img src="screenshots/game.png" width="520" alt="Find the Christmas Tree"></p>
+<p align="center"><img src="screenshots/game.png" width="520" alt="Find the Christmas Tree screenshot"></p>
 
-## Как играть
+## How to play
 
-- На поле 4×4 спрятаны ёлки 🎄 и три бомбы 💣
-- Нажимайте на клетки: ёлка — клетка становится зелёной, бомба — игра окончена
-- Таймер на 29 секунд; кнопка **Again** запускает новую партию
+- The 4×4 board hides Christmas trees 🎄 and three bombs 💣
+- Click cells: a tree turns the cell green, a bomb ends the game
+- You have 29 seconds; the **Again** button starts a new round
 
-## Структура
+## Project structure
 
 ```
 ├── index.html
 ├── css/
-└── javascript.js   # таймер, случайная раскладка, открытие клеток
+└── javascript.js   # timer, random layout, opening cells
 ```
 
-## Запуск
+## Run locally
 
-Игра работает без сборки. Откройте `index.html` в браузере или поднимите локальный сервер:
+No build step. Open `index.html` in a browser, or start a local server:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-и перейдите на http://localhost:8000.
+Then go to http://localhost:8000.
 
-## Стек
+## Tech stack
 
-HTML · CSS · JavaScript (без библиотек)
+HTML · CSS · JavaScript (no libraries)
